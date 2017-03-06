@@ -1,4 +1,4 @@
-# Interview Prep
+# Algorithm and Data Structure Practice
 
 ## Todo
 
