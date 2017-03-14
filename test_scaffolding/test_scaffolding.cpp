@@ -39,16 +39,17 @@ int main(int argc, char ** argv)
     if (test_no == 0)
     {
         printf("Running all tests\n");
-        for (int i = 0; i != n_tests; ++i)
+        for (size_t i = 0; i != n_tests; ++i)
         {
             tests[i]();
+            printf("Test %lu passed\n", i);
         }
         printf("All tests passed\n");
     }
     else
     {
         tests[test_no-1]();
-        printf("Test %d passed\n", test_no);
+        printf("Test %lu passed\n", test_no);
     }
 
     
