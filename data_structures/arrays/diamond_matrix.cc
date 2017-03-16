@@ -40,13 +40,13 @@ void print_diamond(char * arr, int m, int n)
 {
     // Get min dimension, that will bound the diagonal walk
     const int minDim = MIN(m,n);
-
+#define IDX(a,i,j) idx(a,i,j,m,n)
     for (int i = 0; i != m; ++i) // iterate up to bottom left corner
     { 
         for (int s = 0; s != m - 1 - i; ++s) cout << ' '; // get spaces first
         for (int j = 0; j != MIN(i + 1, minDim); ++j) 
         {
-            cout << idx(arr, i - j, j,m,n) << ' '; 
+            cout << IDX(arr, i - j, j) << ' '; 
         }
         cout << '\n';
     }
@@ -56,10 +56,11 @@ void print_diamond(char * arr, int m, int n)
         for (int s = 0; s != j; ++s) cout << ' ';
         for (int i = 0; i != MIN(minDim, n - j); ++i)
         {
-            cout << idx(arr, m-1-i, j + i,m,n) << ' ';
+            cout << IDX(arr, m-1-i, j + i) << ' ';
         }
         cout << '\n';
     }
+#undef IDX
 }
 
 
@@ -98,10 +99,74 @@ void test_2()
     return;
 }
 
+void test_3()
+{
+    const int m = 3;
+    const int n = 3;
+
+    char arr[] = {
+        'a','b','c',
+        'g','h','i',
+        'm','n','o'
+    };
+
+    print_mat(arr,m,n);
+    print_diamond(arr,m,n);
+    return;
+}
+
+void test_4()
+{
+    const int m = 3;
+    const int n = 1;
+
+    char arr[] = {
+        'a',
+        'g',
+        'm'
+    };
+
+    print_mat(arr,m,n);
+    print_diamond(arr,m,n);
+    return;
+}
+
+void test_5()
+{
+    const int m = 1;
+    const int n = 6;
+
+    char arr[] = {
+        'a','b','c','d','e','f'
+    };
+
+    print_mat(arr,m,n);
+    print_diamond(arr,m,n);
+    return;
+}
+
+void test_6()
+{
+    const int m = 1;
+    const int n = 1;
+
+    char arr[] = {
+        'a'
+    };
+
+    print_mat(arr,m,n);
+    print_diamond(arr,m,n);
+    return;
+}
+
 // Register tests here
 void (*tests[])() = {
     test_1,
-    test_2
+    test_2,
+    test_3,
+    test_4,
+    test_5,
+    test_6
 };
 
 int main(int argc, char ** argv) 
