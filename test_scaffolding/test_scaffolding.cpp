@@ -42,7 +42,7 @@ int main(int argc, char ** argv)
         for (size_t i = 0; i != n_tests; ++i)
         {
             tests[i]();
-            printf("Test %lu passed\n", i);
+            printf("Test %lu passed\n", i+1);
         }
         printf("All tests passed\n");
     }
